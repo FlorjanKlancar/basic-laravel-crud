@@ -1,13 +1,13 @@
-@extends('products.layout')
+@extends('layout')
  
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2 class="paddin">Laravel 8 CRUD</h2>
+                <h2>Laravel 8 CRUD</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('create') }}"> Create New Product</a>
             </div>
         </div>
     </div>
@@ -31,11 +31,11 @@
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('destroy',$product->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('show',$product->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('edit',$product->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')

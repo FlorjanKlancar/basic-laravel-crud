@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
   
-class ProductController
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ProductController
     {
         $products = Product::latest()->paginate(5);
     
-        return view('products.index',compact('products'))
+        return view('index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
      
@@ -27,7 +27,7 @@ class ProductController
      */
     public function create()
     {
-        return view('products.create');
+        return view('create');
     }
     
     /**
@@ -45,7 +45,7 @@ class ProductController
     
         Product::create($request->all());
      
-        return redirect()->route('products.index')
+        return redirect()->route('index')
                         ->with('success','Product created successfully.');
     }
      
@@ -57,7 +57,7 @@ class ProductController
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        return view('show',compact('product'));
     } 
      
     /**
@@ -68,7 +68,7 @@ class ProductController
      */
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        return view('edit',compact('product'));
     }
     
     /**
@@ -87,7 +87,7 @@ class ProductController
     
         $product->update($request->all());
     
-        return redirect()->route('products.index')
+        return redirect()->route('index')
                         ->with('success','Product updated successfully');
     }
     
@@ -101,7 +101,7 @@ class ProductController
     {
         $product->delete();
     
-        return redirect()->route('products.index')
+        return redirect()->route('index')
                         ->with('success','Product deleted successfully');
     }
 }
