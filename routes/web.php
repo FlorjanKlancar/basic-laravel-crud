@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ArticleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::resource('/', ProductController::class);
+Route::resource('articles', ArticleController::class);
+
+
   
 
 
